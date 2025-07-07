@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				pixel: ['"Press Start 2P"', 'monospace'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -61,6 +64,37 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				pixel: {
+					green: 'hsl(var(--pixel-green))',
+					blue: 'hsl(var(--pixel-blue))',
+					red: 'hsl(var(--pixel-red))',
+					yellow: 'hsl(var(--pixel-yellow))',
+					purple: 'hsl(var(--pixel-purple))',
+					orange: 'hsl(var(--pixel-orange))',
+					pink: 'hsl(var(--pixel-pink))',
+					brown: 'hsl(var(--pixel-brown))',
+					gray: 'hsl(var(--pixel-gray))'
+				},
+				type: {
+					grass: 'hsl(var(--type-grass))',
+					poison: 'hsl(var(--type-poison))',
+					fire: 'hsl(var(--type-fire))',
+					water: 'hsl(var(--type-water))',
+					electric: 'hsl(var(--type-electric))',
+					psychic: 'hsl(var(--type-psychic))',
+					ice: 'hsl(var(--type-ice))',
+					dragon: 'hsl(var(--type-dragon))',
+					dark: 'hsl(var(--type-dark))',
+					fairy: 'hsl(var(--type-fairy))',
+					normal: 'hsl(var(--type-normal))',
+					fighting: 'hsl(var(--type-fighting))',
+					flying: 'hsl(var(--type-flying))',
+					ground: 'hsl(var(--type-ground))',
+					rock: 'hsl(var(--type-rock))',
+					bug: 'hsl(var(--type-bug))',
+					ghost: 'hsl(var(--type-ghost))',
+					steel: 'hsl(var(--type-steel))'
 				}
 			},
 			borderRadius: {

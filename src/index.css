@@ -2,41 +2,74 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
+/* Pixel Art Pokemon Design System - Retro Gaming Inspired */
+
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Game Boy Inspired Color Palette */
+    --background: 120 20% 12%;
+    --foreground: 120 15% 95%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card: 120 25% 15%;
+    --card-foreground: 120 15% 95%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
+    --popover: 120 25% 15%;
+    --popover-foreground: 120 15% 95%;
 
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
+    /* Retro Game Colors */
+    --primary: 120 60% 45%;
+    --primary-foreground: 120 15% 95%;
 
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 35 100% 55%;
+    --secondary-foreground: 120 25% 15%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
+    --muted: 120 15% 25%;
+    --muted-foreground: 120 10% 70%;
 
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --accent: 200 80% 60%;
+    --accent-foreground: 120 25% 15%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 120 15% 95%;
 
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
+    --border: 120 20% 25%;
+    --input: 120 20% 20%;
+    --ring: 120 60% 45%;
 
-    --radius: 0.5rem;
+    /* Pixel Art Specific Colors */
+    --pixel-green: 120 60% 45%;
+    --pixel-blue: 200 80% 60%;
+    --pixel-red: 0 75% 55%;
+    --pixel-yellow: 45 100% 60%;
+    --pixel-purple: 280 70% 65%;
+    --pixel-orange: 25 100% 60%;
+    --pixel-pink: 320 70% 70%;
+    --pixel-brown: 30 40% 40%;
+    --pixel-gray: 0 0% 60%;
+
+    /* Pokemon Type Colors */
+    --type-grass: 120 60% 45%;
+    --type-poison: 280 70% 65%;
+    --type-fire: 15 100% 60%;
+    --type-water: 200 80% 60%;
+    --type-electric: 45 100% 60%;
+    --type-psychic: 320 70% 70%;
+    --type-ice: 180 60% 80%;
+    --type-dragon: 280 80% 50%;
+    --type-dark: 0 0% 30%;
+    --type-fairy: 320 60% 85%;
+    --type-normal: 0 0% 70%;
+    --type-fighting: 0 70% 50%;
+    --type-flying: 220 60% 70%;
+    --type-ground: 35 60% 50%;
+    --type-rock: 30 40% 45%;
+    --type-bug: 70 60% 50%;
+    --type-ghost: 280 30% 40%;
+    --type-steel: 220 20% 60%;
+
+    --radius: 0;
 
     --sidebar-background: 0 0% 98%;
 
@@ -101,5 +134,34 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Custom pixel art styles */
+@layer utilities {
+  .pixel-art {
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -webkit-crisp-edges;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+  }
+
+  .transform-style-preserve-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
   }
 }
