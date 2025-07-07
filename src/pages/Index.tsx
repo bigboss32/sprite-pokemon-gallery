@@ -12,24 +12,25 @@ interface PokemonData {
 
 const Index = () => {
   const [pokemons, setPokemons] = useState<PokemonData[]>([]);
+  const [loading, setLoading] = useState<boolean>(true);
 
-  // Sample data - replace with your actual data source
   useEffect(() => {
-    const samplePokemon: PokemonData = {
-      name: "ivysaur",
-      content: "Evoluciona de Bulbasaur, mostrando un bulbo en crecimiento que absorbe la energía solar para potenciar sus habilidades. Se distingue por prepararse para su evolución final, Venusaur.",
-      extra1: "grass",
-      extra2: "poison",
-      descrip: "Pregunta: Describe a ivysaur |Respuesta: iva límite da llamaradas venenosos para atacar.\nRespuesta: Ivysaur es la evolución de Bulbasaur, su flor crece mientras almacena poder.",
-      imagen: "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/2.png"
+    const fetchPokemons = async () => {
+      try {
+        const response = await fetch('https://gelan32-fastapi-pokemon.hf.space/pokemon'); // ✅ NUEVA URL
+        if (!response.ok) {
+          throw new Error('Error fetching data');
+        }
+        const data: PokemonData[] = await response.json();
+        setPokemons(data);
+      } catch (error) {
+        console.error(error);
+      } finally {
+        setLoading(false);
+      }
     };
 
-    // For demo, we'll show multiple copies of the sample data
-    setPokemons([
-      samplePokemon,
-      { ...samplePokemon, name: "bulbasaur", extra2: "" },
-      { ...samplePokemon, name: "venusaur", content: "La evolución final de Bulbasaur, con una gran flor que desprende un aroma relajante." },
-    ]);
+    fetchPokemons();
   }, []);
 
   return (
@@ -43,7 +44,7 @@ const Index = () => {
           <div className="flex justify-center">
             <div className="bg-primary px-4 py-1 border border-border">
               <span className="font-pixel text-xs text-primary-foreground">
-                {pokemons.length} POKÉMON FOUND
+                {loading ? 'LOADING...' : `${pokemons.length} POKÉMON FOUND`}
               </span>
             </div>
           </div>
@@ -52,12 +53,21 @@ const Index = () => {
 
       {/* Pokemon Grid */}
       <main className="container mx-auto px-4 py-8">
-        {pokemons.length === 0 ? (
+        {loading ? (
+          <div className="text-center py-16">
+            <div className="bg-card border-2 border-border p-8 inline-block">
+              <h2 className="font-pixel text-lg text-foreground mb-4">Loading Pokédex...</h2>
+              <p className="text-muted-foreground text-sm">
+                Please wait while we fetch your Pokémon.
+              </p>
+            </div>
+          </div>
+        ) : pokemons.length === 0 ? (
           <div className="text-center py-16">
             <div className="bg-card border-2 border-border p-8 inline-block">
               <h2 className="font-pixel text-lg text-foreground mb-4">NO POKÉMON DATA</h2>
               <p className="text-muted-foreground text-sm">
-                Load your Pokémon data to see the collection!
+                No Pokémon found in the API.
               </p>
             </div>
           </div>
